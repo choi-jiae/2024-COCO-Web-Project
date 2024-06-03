@@ -9,9 +9,12 @@ import {
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import EditMemoCard from '../components/EditMemoCard';
 
 // MmemoCard  구성요소
-const card = (
+const MemoCardContent = ({ title, content }) => {
+    
+    return (
     <React.Fragment>
         <CardActions  style={{display: 'flex', justifyContent: 'flex-end'}}>
             <div>
@@ -28,18 +31,40 @@ const card = (
         <CardContent>
             <Typography 
                 sx={{ fontSize: 20, padding: '10px' }} color="text.first">
-                    Memo Title
+                {title}
             </Typography>
             <Typography 
-                sx={{ fontSize: 13, padding: '8px' }} color="text.secondary">
-                    Memo Content
+                sx={{ fontSize: 15, padding: '8px' }} color="text.secondary">
+                {content}
             </Typography>
         </CardContent>
     </React.Fragment>
-)
+    );
+};
 
 export default class MemoCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isEditing: false
+        };
+    }
+
+    handleEdit = () => {
+        this.setState({ isEditing: true });
+    }
+
+    handleDelete = () => {
+        // delete하는 logic 작성
+    }
+
     render() {
+        const { title, content } = this.props;
+
+        if (this.state.isEditing) {
+            return <EditMemoCard title = {title} content = {content} />;
+        }
+
         return (
             <Card 
                 variant="elevation" 
@@ -51,7 +76,7 @@ export default class MemoCard extends Component {
                     margin: '13px',
                     overflow: 'auto'
                 }}>
-                {card}
+                <MemoCardContent title = {title} content = {content}/>
             </Card>
         );
     }

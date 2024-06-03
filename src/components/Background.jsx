@@ -4,6 +4,25 @@ import EditMemoCard from '../components/EditMemoCard';
 import AddButton from '../components/AddButton';
 
 export default class Background extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            memos: [{type: 'EditMemoCard', title: '', content: ''}]
+        };
+    }
+
+    handleAddMemo = () => {
+        this.setState((prevState) => ({
+            memos: [...prevState.memos, {type: 'EditMemoCard', title: '', content: ''}]
+        }));
+    };
+
+    handleSaveMemo = (index, title, content) => {
+        const newMemos = [...this.state.memos];
+        newMemos[index] = { type: 'MemoCard', title, content };
+        this.setState({ memos: newMemos });
+    };
+
     render() {
         return (
             <div style={{
@@ -13,15 +32,24 @@ export default class Background extends Component {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(4, 1fr)',
                     overflow: 'auto'}}>
-                {/* 나중에 반복문으로 처리 */}
-                <MemoCard />
-                <EditMemoCard/>
-                <MemoCard />
-                <MemoCard />
-                <MemoCard />
-                <MemoCard />
+
+                {this.state.memos.map((memo, index) => (
+                    memo.type === "EditMemoCard" ? (
+                        <EditMemoCard
+                            key = {index} 
+                            onSave = {(title, content) => this.handleSaveMemo(index, title, content)}
+                        />
+                    ) : (
+                        <MemoCard
+                            key = {index}
+                            title = {memo.title}
+                            content = {memo.content}
+                        />
+                    )
+                ))}
+                
                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <AddButton />
+                    <AddButton onClick={this.handleAddMemo}/>
                 </div>
                 
             </div>

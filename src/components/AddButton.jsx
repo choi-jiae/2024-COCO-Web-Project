@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 export default class AddButton extends Component { 
     render() {
         return (
-            <Fab color='primary'>
+            <Fab color='primary' onClick={this.props.onClick}>
                 <AddIcon color='white'/>
             </Fab>
         );
