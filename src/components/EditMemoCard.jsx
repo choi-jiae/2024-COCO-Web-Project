@@ -48,6 +48,7 @@ const EditCard = ({ title, content, onSave, onTitleChange, onContentChange}) => 
         </React.Fragment>
     );
 };
+
 export default class EditMemoCard extends Component {
     constructor(props) {
         super(props);

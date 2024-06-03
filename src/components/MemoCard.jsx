@@ -43,27 +43,27 @@ const MemoCardContent = ({ title, content }) => {
 };
 
 export default class MemoCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEditing: false
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         isEditing: false
+    //     };
+    // }
 
-    handleEdit = () => {
-        // edit하는 logic 작성
-    }
+    // handleEdit = () => {
+    //     // edit하는 logic 작성
+    // }
 
-    handleDelete = () => {
-        // delete하는 logic 작성
-    }
+    // handleDelete = () => {
+    //     // delete하는 logic 작성
+    // }
 
     render() {
         const { title, content } = this.props;
 
-        if (this.state.isEditing) {
-            return <EditMemoCard title = {title} content = {content} />;
-        }
+        // if (this.state.isEditing) {
+        //     return <EditMemoCard title = {title} content = {content} />;
+        // }
 
         return (
             <Card 
