@@ -51,7 +51,7 @@ export default class MemoCard extends Component {
     }
 
     handleEdit = () => {
-        this.setState({ isEditing: true });
+        // edit하는 logic 작성
     }
 
     handleDelete = () => {
