@@ -9,41 +9,38 @@ import {
 
 import SaveIcon from '@mui/icons-material/Save';
 
-const EditCard = ({ title, content, onSave, onTitleChange, onContentChange}) => {
-
+const EditCard = ({ title, content, onSave, onTitleChange, onContentChange }) => {
     const handleSave = () => {
         onSave(title, content);
     };
 
     return (
         <React.Fragment>
-            <CardActions  style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <CardActions style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <div>
-                <IconButton
-                    sx={{ color: 'grey' }} 
-                    onClick = {handleSave}>
-                    <SaveIcon />
-                </IconButton>
+                    <IconButton
+                        sx={{ color: 'grey' }}
+                        onClick={handleSave}>
+                        <SaveIcon />
+                    </IconButton>
                 </div>
             </CardActions>
             <CardContent>
                 <TextField
                     label="Memo Title"
                     variant="standard"
-                    value = {title}
+                    value={title}
                     fullWidth
-                    onChange = {onTitleChange}
-                >
-                </TextField>
+                    onChange={onTitleChange}
+                />
                 <TextField
                     label="Memo Content"
                     variant="standard"
                     multiline
                     fullWidth
-                    value = {content}
-                    onChange = {onContentChange}
-                >
-                </TextField>
+                    value={content}
+                    onChange={onContentChange}
+                />
             </CardContent>
         </React.Fragment>
     );
@@ -52,12 +49,12 @@ const EditCard = ({ title, content, onSave, onTitleChange, onContentChange}) => 
 export default class EditMemoCard extends Component {
     constructor(props) {
         super(props);
-            this.state = {
-                title: '',
-                content: '',
-            };
-        }
-    
+        this.state = {
+            title: this.props.title,
+            content: this.props.content
+        };
+    }
+
     handleSave = () => {
         // onSave 메서드를 호출하여 부모 컴포넌트로 상태 전달
         this.props.onSave(this.state.title, this.state.content);
@@ -73,20 +70,20 @@ export default class EditMemoCard extends Component {
 
     render() {
         return (
-            <Card 
-                variant="elevation" 
+            <Card
+                variant="elevation"
                 style={{
-                    backgroundColor: 'white', 
-                    width: '350px', 
+                    backgroundColor: 'white',
+                    width: '350px',
                     height: '450px',
                     borderRadius: '15px',
                     margin: '13px',
                     overflow: 'auto'
                 }}>
-                <EditCard 
+                <EditCard
                     title={this.state.title}
                     content={this.state.content}
-                    onSave={this.handleSave} 
+                    onSave={this.handleSave}
                     onTitleChange={this.handleTitleChange}
                     onContentChange={this.handleContentChange}
                 />
