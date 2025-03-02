@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2024 COCO 학회 웹 개발 스터디 Project
+웹 개발 공부를 하며 개발한 간단한 메모장 서비스입니다.
 
 ## Available Scripts
 
